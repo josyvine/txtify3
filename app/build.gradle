@@ -3,14 +3,14 @@ apply plugin: 'com.android.application'
 
 android {
     // FIX: Added namespace required by Gradle 8.0+
-    namespace 'com.txtify.app' 
+    namespace 'com.vineyard.txtify.app' 
 
     // FIX: Updated SDK version to work with modern Gradle
     compileSdkVersion 34
     
     defaultConfig {
         // Using our app's ID and settings
-        applicationId "com.txtify.app"
+        applicationId "com.vineyard.txtify.app"
         minSdkVersion 21
         // FIX: Updated target SDK to match compile SDK
         targetSdkVersion 34
