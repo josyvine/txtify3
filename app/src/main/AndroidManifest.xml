@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"> 
+
+    <!-- Permissions to read and write files -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- NEW: Permission to access the internet for the contact form -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- NEW: Permission to access and browse all files on Android 11 (API 30) and above -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!--
+    The 'requestLegacyExternalStorage' attribute is REQUIRED for targetSdkVersion 29
+    to allow the app's file saving logic to work correctly on Android 10.
+    -->
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/txtify"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/txtify"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
+        android:name=".MyApplication">
+
+        <!-- NEW: AdMob App ID Configuration -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2223803405403727~8067739426"/>
+
+        <!-- Main Activity Declaration -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true">
+
+            <!-- This intent-filter makes the app show up in the launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--
+            This intent-filter allows the app to be an option when you
+            tap "Open with" on a file in another file manager.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Help Activity Declaration -->
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/help_title"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Zip Contents Activity Declaration -->
+        <activity
+            android:name=".ZipContentsActivity"
+            android:label="ZIP Contents"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- NEW: Contact Activity Declaration -->
+        <activity
+            android:name=".ContactActivity"
+            android:label="@string/contact_title"
+            android:parentActivityName=".HelpActivity" />
+
+    </application>
+</manifest>
