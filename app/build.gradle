@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+// REMOVED: apply plugin: 'com.google.gms.google-services' (This fixed the missing json error)
+
+android {
+    // FIX: Added namespace required by Gradle 8.0+
+    namespace 'com.txtify.app' 
+
+    // FIX: Updated SDK version to work with modern Gradle
+    compileSdkVersion 34
+    
+    defaultConfig {
+        // Using our app's ID and settings
+        applicationId "com.txtify.app"
+        minSdkVersion 21
+        // FIX: Updated target SDK to match compile SDK
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        
+        // Re-enabling MultiDex, as required by your working project
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // THE DEFINITIVE, WORKING COMBINATION FOR AIDE:
+    // 1. 'appcompat:1.1.0' from your working project.
+    // 2. An older, more stable 'material:1.0.0' that is compatible.
+    // 3. The 'multidex' library from your working project.
+    // 4. Our app's required 'documentfile' library.
+    // 5. **FIX: Added the missing lifecycle-runtime library required by appcompat:1.1.0.**
+    // 6. NEW: Added RecyclerView for the advanced ZIP file list.
+    // 7. NEW FIX: Added lifecycle-extensions, which provides the missing LiveData class required by DialogFragment.
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // NEW: Google Mobile Ads SDK (AdMob)
+    implementation 'com.google.android.gms:play-services-ads:23.0.0'
+
+    // NEW: Google Play In-App Update API
+    implementation 'com.google.android.play:app-update:2.1.0'
+}
