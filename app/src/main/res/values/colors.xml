@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary app colors -->
+    <color name="colorPrimary">#263238</color> <!-- Blue Grey 900 -->
+    <color name="colorPrimaryDark">#192126</color> <!-- A darker shade for the status bar -->
+    <color name="colorAccent">#00ACC1</color> <!-- Cyan 600 -->
+
+    <!-- Text and background colors for a modern UI -->
+    <color name="windowBackground">#F5F5F5</color> <!-- A light grey for the main background -->
+    <color name="cardBackground">#FFFFFF</color> <!-- White for cards, panels, and text editor -->
+
+    <color name="textColorPrimary">#212121</color> <!-- Dark grey for main text -->
+    <color name="textColorSecondary">#757575</color> <!-- Lighter grey for subtitles and hints -->
+
+    <color name="iconTint">#546E7A</color> <!-- Muted color for icons -->
+</resources>
